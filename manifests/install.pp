@@ -66,11 +66,12 @@ class falcon::install {
       }
 
       $install_args = {
-        'CID' => $falcon::cid,
-        'ProvToken' => $falcon::provisioning_token,
+        'CID'           => $falcon::cid,
+        'ProvToken'     => $falcon::provisioning_token,
         'APP_PROXYNAME' => $falcon::proxy_host,
         'APP_PROXYPORT' => $falcon::proxy_port,
-        'PROXYDISABLE' => $falcon::proxy_enabled,
+        'PROXYDISABLE'  => $falcon::proxy_enabled,
+        'GROUPING_TAGS' => $falcon::tags
       }
 
       $_package_options = {

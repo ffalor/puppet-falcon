@@ -124,26 +124,6 @@ Facter.add(:falcon, type: :aggregate) do
     end
   end
 
-  chunk(:tags) do
-    begin
-      kernel = Facter.value('kernel')
-
-      next unless [ 'Linux' ].include?(kernel)
-
-      tags = Facter::Core::Execution.execute('/opt/CrowdStrike/falconctl -g --tags', { on_fail: :raise }).strip.split('=')[-1].chomp('.')
-
-      tags = if tags.include?('tags are not set.')
-               []
-             else
-               tags.split(',')
-             end
-      { tags: tags }
-    rescue => exception
-      Puppet.debug("Unable to retrieve tags: #{exception}")
-      next
-    end
-  end
-
   chunk(:cid) do
     begin
       kernel = Facter.value('kernel')

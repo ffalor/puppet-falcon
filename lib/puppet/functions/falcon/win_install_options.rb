@@ -22,6 +22,12 @@ Puppet::Functions.create_function(:"falcon::win_install_options") do
       end
     end
 
+    if install_options.key?('GROUPING_TAGS')
+      unless install_options['GROUPING_TAGS'].nil?
+        install_options['GROUPING_TAGS'] = install_options['GROUPING_TAGS'].join(',')
+      end
+    end
+
     install_options.compact.map { |k, v| "#{k}=#{v}" }
   end
 end

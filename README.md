@@ -312,6 +312,14 @@ class {'falcon':
 
 ---
 
+## Limitations
+
+The linux sensor comes with `falconctl` that allows the module to configure the agent after install. The windows agent does not have this. The windows agent can only be configured at install time.
+
+This means we are able to set configruation options like tags and proxy settings only at install time on windows. On linux we set these options via the `falconctl` which allows us to manage state after install.
+
+---
+
 ## `api` vs `local` install methods
 
 Generally the `api` method will be fine for most use cases if `version_manage` is set to `false`. If `version_manage` is set to `true` you may run into api rate limits.
